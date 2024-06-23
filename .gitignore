@@ -6,3 +6,6 @@ terraform-provider*
 
 # Files
 *.env
+
+# Folders
+.terraform/

@@ -22,11 +22,11 @@ variable "region" {
 
 variable "amiId" {
         description = "The AMI to use"
-        default = "ami-0a6b2839d44d781b2" #Ubuntu 20.04
+        default = "ami-07a73a89333ac3eff" # Amazon Linux 2023 ARMx64
 }
 
 variable "instanceType" {
-        default = "t3.medium"
+        default = "t3g.medium"
 }
 
 
@@ -66,5 +66,15 @@ variable "igwTags" {
 
 variable "publicRtTags" {
   description = "Internet gateway tags to use"
+  type        = map(string)
+}
+
+variable "ec2MasterTags" {
+  description = "Tags to use for the EC2 master instance"
+  type        = map(string)
+}
+
+variable "ec2WorkerTags" {
+  description = "Tags to use for the EC2 worker instances"
   type        = map(string)
 }
