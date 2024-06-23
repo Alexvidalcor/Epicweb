@@ -25,35 +25,35 @@
 			"tflint": "latest",
 			"terragrunt": "latest"
 		},
-		"ghcr.io/devcontainers-contrib/features/argo-cd:1": {
-			"version": "latest"
-		},
-		"ghcr.io/devcontainers-contrib/features/cert-manager:1": {
-			"version": "latest"
-		},
-		"ghcr.io/devcontainers-contrib/features/k2tf:1": {
-			"version": "latest"
-		},
-		"ghcr.io/devcontainers-contrib/features/kops:1": {
-			"version": "latest"
-		},
-		"ghcr.io/devcontainers-contrib/features/kubescape:1": {
-			"version": "latest"
-		},
+		// "ghcr.io/devcontainers-contrib/features/argo-cd:1": {
+		// 	"version": "latest"
+		// },
+		// "ghcr.io/devcontainers-contrib/features/cert-manager:1": {
+		// 	"version": "latest"
+		// },
+		// "ghcr.io/devcontainers-contrib/features/k2tf:1": {
+		// 	"version": "latest"
+		// },
+		// "ghcr.io/devcontainers-contrib/features/kops:1": {
+		// 	"version": "latest"
+		// },
+		// "ghcr.io/devcontainers-contrib/features/kubescape:1": {
+		// 	"version": "latest"
+		// },
 		"ghcr.io/devcontainers-contrib/features/kubie:1": {
 			"version": "latest"
 		},
-		"ghcr.io/devcontainers-contrib/features/kyverno-cli:1": {
-			"version": "latest"
-		},
-		"ghcr.io/dhoeric/features/stern:1": {},
+		// "ghcr.io/devcontainers-contrib/features/kyverno-cli:1": {
+		// 	"version": "latest"
+		// },
+		// "ghcr.io/dhoeric/features/stern:1": {},
 		"ghcr.io/rio/features/k9s:1": {},
-		"ghcr.io/itsmechlark/features/trivy:1": {
-			"version": "latest"
-		},
-		"ghcr.io/xfrancois/devcontainers-features/velero:1": {
-			"version": "latest"
-		},
+		// "ghcr.io/itsmechlark/features/trivy:1": {
+		// 	"version": "latest"
+		// },
+		// "ghcr.io/xfrancois/devcontainers-features/velero:1": {
+		// 	"version": "latest"
+		// },
 		"ghcr.io/devcontainers/features/aws-cli:1": {
 			"version": "latest"
 		}
