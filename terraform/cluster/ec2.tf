@@ -13,7 +13,7 @@ resource "aws_instance" "k8s_ec2-master" {
 
     tags = var.ec2MasterTags
     
-    user_data_base64 = base64encode("${templatefile("scripts/install_k8s_msr.sh", {
+    user_data_base64 = base64encode("${templatefile("../scripts/k8s-master_installation.sh", {
 
     access_key = var.accessKey
     private_key = var.secretKey
@@ -24,12 +24,8 @@ resource "aws_instance" "k8s_ec2-master" {
     depends_on = [
     aws_s3_bucket.k8s_s3-bucket,
     random_string.k8s_s3-randomname
-  ]
-
-    
+  ]  
 } 
-
-
 
 
 resource "aws_instance" "k8s_ec2-worker" {
@@ -48,7 +44,7 @@ resource "aws_instance" "k8s_ec2-worker" {
 
     tags = var.ec2WorkerTags
 
-    user_data_base64 = base64encode("${templatefile("scripts/install_k8s_wrk.sh", {
+    user_data_base64 = base64encode("${templatefile("../scripts/k8s-worker_installation.sh", {
 
     access_key = var.accessKey
     private_key = var.secretKey
@@ -61,6 +57,6 @@ resource "aws_instance" "k8s_ec2-worker" {
     depends_on = [
       aws_s3_bucket.k8s_s3-bucket,
       random_string.k8s_s3-randomname,
-      aws_instance.ec2_instance_msr
+      aws_instance.k8s_ec2-master
   ]
 }

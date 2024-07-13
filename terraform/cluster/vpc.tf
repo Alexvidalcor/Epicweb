@@ -7,7 +7,7 @@ resource "aws_vpc" "k8s_vpc-main" {
 
 # Select a random availability zone in the provided region
 resource "random_shuffle" "k8s_vpc-region" {
-  input        = ["${var.region}a", "${var.region}b", "${var.region}c", "${var.region}d", "${var.region}e"]
+  input        = ["${var.region}a", "${var.region}b", "${var.region}c"]
   result_count = 1
 }
 
@@ -42,7 +42,7 @@ resource "aws_route_table" "k8s_vpc-publicrt" {
     gateway_id      = aws_internet_gateway.k8s_vpc-igw.id
   }
 
-  tags = vars.publicRtTags
+  tags = var.publicRtTags
 }
 
 

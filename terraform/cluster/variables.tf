@@ -8,7 +8,7 @@ variable "secretKey" {
 
 variable "ec2Key" {
         description = "Key to enter in you Ec2 instances"
-        default = "mykey" 
+        default = "putavalidkeyname" 
 }
 variable "workerNumber" {
         description = "Number of worker instances to be join on cluster."
@@ -26,7 +26,7 @@ variable "amiId" {
 }
 
 variable "instanceType" {
-        default = "t3g.medium"
+        default = "t4g.medium"
 }
 
 
@@ -76,5 +76,10 @@ variable "ec2MasterTags" {
 
 variable "ec2WorkerTags" {
   description = "Tags to use for the EC2 worker instances"
+  type        = map(string)
+}
+
+variable "s3Tags" {
+  description = "S3 bucket tags to use"
   type        = map(string)
 }

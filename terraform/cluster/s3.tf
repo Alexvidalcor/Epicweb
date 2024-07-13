@@ -6,26 +6,27 @@ resource "random_string" "k8s_s3-randomname" {
   lower = true
 }
 
+# Create a S3 bucket
+resource "aws_s3_bucket" "k8s_s3-bucket" {
+  bucket = "k8s-${random_string.k8s_s3-randomname.result}"
+  force_destroy = true
+  tags = var.s3Tags
+ depends_on = [
+    random_string.k8s_s3-randomname
+  ]
+}
+
 # Create a S3 ACL (Access Control List)
 resource "aws_s3_bucket_acl" "k8s_s3-acl" {
-  bucket = aws_s3_bucket.s3buckit.id
+  bucket = aws_s3_bucket.k8s_s3-bucket.id
   acl    = "private"
-  depends_on = [aws_s3_bucket_ownership_controls.s3_bucket_acl_ownership]
+  depends_on = [aws_s3_bucket_ownership_controls.k8s_s3-aclownership]
 }
 
 # Create a S3 bucket ownership controls
 resource "aws_s3_bucket_ownership_controls" "k8s_s3-aclownership" {
-  bucket = aws_s3_bucket.s3buckit.id
+  bucket = aws_s3_bucket.k8s_s3-bucket.id
   rule {
     object_ownership = "ObjectWriter"
   }
-}
-
-# Create a S3 bucket
-resource "aws_s3_bucket" "k8s_s3-bucket" {
-  bucket = "k8s-${random_string.s3name.result}"
-  force_destroy = true
- depends_on = [
-    random_string.s3name
-  ]
 }
