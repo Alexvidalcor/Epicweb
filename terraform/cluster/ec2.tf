@@ -5,11 +5,14 @@ resource "aws_instance" "k8s_ec2-master" {
     key_name = var.ec2Key
     associate_public_ip_address = true
     security_groups = [ aws_security_group.k8s_vpc-sg.id ]
+
     root_block_device {
-    volume_type = "gp3"
-    volume_size = "8"
-    delete_on_termination = true
+      volume_type = "gp3"
+      volume_size = "8"
+      delete_on_termination = true
     }
+
+    iam_instance_profile = aws_iam_instance_profile.k8s_iam-profile1.name
 
     tags = var.ec2MasterTags
     
@@ -22,8 +25,8 @@ resource "aws_instance" "k8s_ec2-master" {
     })}")
 
     depends_on = [
-    aws_s3_bucket.k8s_s3-bucket,
-    random_string.k8s_s3-randomname
+      aws_ssm_parameter.kubeadm_join_command
+      
   ]  
 } 
 
@@ -36,11 +39,14 @@ resource "aws_instance" "k8s_ec2-worker" {
     key_name = var.ec2Key
     associate_public_ip_address = true
     security_groups = [ aws_security_group.k8s_vpc-sg.id ]
+
     root_block_device {
-    volume_type = "gp3"
-    volume_size = "8"
-    delete_on_termination = true
+      volume_type = "gp3"
+      volume_size = "8"
+      delete_on_termination = true
     }
+
+    iam_instance_profile = aws_iam_instance_profile.k8s_iam-profile1.name
 
     tags = var.ec2WorkerTags
 

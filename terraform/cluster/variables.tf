@@ -83,3 +83,8 @@ variable "s3Tags" {
   description = "S3 bucket tags to use"
   type        = map(string)
 }
+
+variable "ssmTags" {
+  description = "Ssm tags to use"
+  type        = map(string)
+}
