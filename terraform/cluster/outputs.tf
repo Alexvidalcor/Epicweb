@@ -15,5 +15,5 @@ output "instance_msr_privte_ip" {
 
 output "s3_bucket_name" {
   description = "The S3 bucket name"
-  value       = "k8s-${random_string.k8s_s3-bucket.result}"
+  value       = "k8s-${random_string.k8s_s3-randomname.result}"
 }

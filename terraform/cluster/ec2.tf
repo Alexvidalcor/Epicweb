@@ -25,8 +25,8 @@ resource "aws_instance" "k8s_ec2-master" {
     })}")
 
     depends_on = [
-      aws_ssm_parameter.kubeadm_join_command
-      
+      aws_ssm_parameter.k8s_ssm-parameter1
+
   ]  
 } 
 

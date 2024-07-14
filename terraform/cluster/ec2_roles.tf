@@ -25,7 +25,7 @@ resource "aws_iam_role_policy_attachment" "k8s_iam-attachment1" {
 
 resource "aws_iam_instance_profile" "k8s_iam-profile1" {
   name = "ssm_full_access"
-  role = aws_iam_role.k8s_iam-attachment1.name
+  role = aws_iam_role.k8s_iam-role1.name
 }
 
 # ----------------------------------------------
