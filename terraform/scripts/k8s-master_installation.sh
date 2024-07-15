@@ -65,6 +65,13 @@ echo "Initializing Kubernetes cluster..."
 kubeadm init --apiserver-advertise-address=$ipaddr --pod-network-cidr=192.168.0.0/16 --apiserver-cert-extra-sans=$pubip > /tmp/kubeadm_init.log
 
 echo "-----------------------------"
+echo "Waiting for Kubernetes cluster to be ready..."
+sleep 1m
+systemctl restart containerd.service
+systemctl restart kubelet
+
+
+echo "-----------------------------"
 echo "Configuring kubectl for root..."
 mkdir -p /root/.kube
 cp /etc/kubernetes/admin.conf /root/.kube/config
